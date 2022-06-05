@@ -1,0 +1,14 @@
+.CardContainerDiv{
+    background-color: blanchedalmond;
+    margin: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 25px;
+    align-items: center;
+}
+
+#tituloId {
+    grid-column: 1 / 5;
+    margin-bottom: 1rem;
+}

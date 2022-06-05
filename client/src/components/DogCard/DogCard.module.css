@@ -1,0 +1,21 @@
+.DogCardDiv{
+    background-color:aliceblue;
+    width: 200px;
+    height: 300px;
+    margin: auto;
+}
+
+#nombreId{
+    font-size: 1rem;
+}
+
+#imagenId{
+    width: 90%;
+}
+
+p{
+    font-size: 0.7rem;
+    width: 90%;
+    margin: auto;
+    margin-top: 0.5rem;
+}
