@@ -16,15 +16,21 @@ const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
 
 router.get("/dogs", async (req, res) => {
     let {name} = req.query;
+    const {data} = await axios(URL);
     let allDogs;
     try {
         if(!name){
-            allDogs = await Dog.findAll();
+            allDogs = await Dog.findAll({include: Temper});
+            allDogs = allDogs.concat(data);
         }else{
             allDogs = await Dog.findAll({where: {name}});
+            if(!allDogs.length){
+                allDogs = data.find(e => e.name === name);
+            }else{
+                res.send("No se encontró el perro con el nomre: "+name)
+            }
         }
-        if(allDogs.length) res.send(allDogs);
-        else res.send("No se encontraron perros");
+        res.send(allDogs);
     } catch (error) {
         console.log(error);
     }    
