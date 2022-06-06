@@ -6,6 +6,7 @@ const router = Router();
 const {Dog, Temper} = require("../db.js");
 
 const axios = require("axios");
+const { Op } = require("../db");
 
 const {API_KEY} = process.env;
 const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
@@ -17,19 +18,45 @@ const URL = `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`;
 router.get("/dogs", async (req, res) => {
     let {name} = req.query;
     const {data} = await axios(URL);
-    let allDogs;
-    try {
-        if(!name){
-            allDogs = await Dog.findAll({include: Temper});
-            allDogs = allDogs.concat(data);
-        }else{
-            allDogs = await Dog.findAll({where: {name}});
-            if(!allDogs.length){
-                allDogs = data.find(e => e.name === name);
-            }else{
-                res.send("No se encontró el perro con el nomre: "+name)
-            }
+    const dogsAPI = [];
+    data.map(
+        (d) => {
+            dogsAPI.push({
+                id: d.id,
+                name: d.name,
+                bred_for: d.bred_for,
+                bred_group: d.bred_group,
+                life_span: d.life_span,
+                temperament: d.temperament,
+                reference_image_id: d.reference_image_id,
+                image: d.image.url,
+                weight: d.weight.metric.length > 2 ? d.weight.metric.split(" - ") : [d.weight.metric, d.weight.metric],
+                height: d.height.metric.length > 2 ? d.height.metric.split(" - ") : [d.height.metric, d.height.metric],  //Devuelve como array las alturas
+            })
         }
+    )
+    let allDogs = [];
+    try {
+        let dogsDb = await Dog.findAll({include: Temper});
+        if(dogsDb.length) {
+            dogsDb.map(
+                (dog) => {
+                    let t = [];
+                    dog.tempers.map((te) => t.push(te.name))
+                    let d = {
+                        id: "db"+dog.id,
+                        name: dog.name,
+                        height: [dog.height, dog.height],
+                        weight: [dog.weight, dog.weight],
+                        years: dog.years,
+                        temperament: t.join(", ")
+                    }
+                    allDogs.push(d);
+                }
+            );
+        }
+        allDogs = allDogs.concat(dogsAPI);
+        if(name) allDogs = allDogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
         res.send(allDogs);
     } catch (error) {
         console.log(error);
@@ -65,7 +92,17 @@ router.post("/dogs", async (req, res) => {
 router.get("/temperaments", async (req, res) => {
     try {
         let temperaments = await Temper.findAll();
-        if(temperaments.length) return res.send({a:"Los traje de la base", temperaments});
+        if(temperaments.length){
+            console.log("De la DB");
+            let tempDb = [];
+            temperaments.map(
+                (t) => {
+                    tempDb.push(t.name);
+                }
+            );
+            tempDb.sort();
+            return res.send(tempDb);
+        }
         
         let {data} = await axios(URL);
         let tempApi = [];
@@ -85,7 +122,9 @@ router.get("/temperaments", async (req, res) => {
         for(let i = 0; i < tempApi.length; i++){
             let p = await Temper.create({"name":tempApi[i]})
         }
-        return res.send({a: "Los busque en axios", tempApi});
+        console.log("De la API");
+        tempApi.sort();
+        return res.send(tempApi);
     } catch (error) {
         console.log(error);
     }
@@ -94,3 +133,28 @@ router.get("/temperaments", async (req, res) => {
 
 
 module.exports = router;
+
+
+
+// router.get("/dogs", async (req, res) => {
+//     let {name} = req.query;
+//     const {data} = await axios(URL);
+//     let allDogs;
+//     try {
+//         if(!name){
+//             allDogs = await Dog.findAll({include: Temper});
+//             allDogs = allDogs.concat(data);
+//         }else{
+//             allDogs = await Dog.findAll({where: {"name": {[Op.iLike]: name}}});
+//             if(!allDogs.length){
+//                 allDogs = data.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+//             }else{
+//                 res.send("No se encontró el perro con el nomre: "+name)
+//             }
+//         }
+//         console.log(allDogs);
+//         res.send(allDogs);
+//     } catch (error) {
+//         console.log(error);
+//     }    
+// });
