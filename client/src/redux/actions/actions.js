@@ -1,5 +1,6 @@
-import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_ALL_TEMPERS, GET_DOG_BY_TEMPER } from "./actionsTypes";
-import axios from "axios";
+import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_ALL_TEMPERS, 
+    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS } from "./actionsTypes";
+//import axios from "axios";
 
 const URL = "http://localhost:3001";
 
@@ -27,6 +28,34 @@ export const getDogByTemper = (temper) => {
         payload: temper
     }
 }
+
+export const getDogByDb = () => {
+    return {
+        type: GET_DOGS_BY_DB,
+        payload: "db"
+    }
+}
+
+export const getDogByApi = () => {
+    return {
+        type: GET_DOGS_BY_API,
+        payload: "db"
+    }
+}
+
+export const orderDogs = (orden) => {
+    return {
+        type: ORDER_DOGS,
+        payload: orden
+    }
+}
+
+
+
+
+
+
+
 
 // export const getAllDogs =  () => async dispatch => {
 //     let json = await axios.get(`${URL}/dogs`)
