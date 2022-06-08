@@ -46,9 +46,9 @@ router.get("/dogs", async (req, res) => {
                     let d = {
                         id: "db"+dog.id,
                         name: dog.name,
-                        height: [dog.height, dog.height],
-                        weight: [dog.weight, dog.weight],
-                        years: dog.years,
+                        height: dog.height,
+                        weight: dog.weight,
+                        life_span: dog.years,
                         temperament: t.join(", ")
                     }
                     allDogs.push(d);
@@ -76,14 +76,15 @@ router.get("/dogs/:idRaza", async (req, res) => {
 });
 
 router.post("/dogs", async (req, res) => {
-    const {name, height, weight, year, temp} = req.body;
+    const {name, height, weight, years, temp} = req.body;
+    console.log(req.body);
     try {
         const dog = await Dog.create(req.body);
         for(let i = 0; i < temp.length; i++){
             const tempe = await Temper.findOne({where: {"name": temp[i]}})
             dog.addTempers([tempe]);
         }
-        res.send("Se agregó exitosamente: "+temp);
+        res.json({a:"Se agregó exitosamente: ",dog});
     } catch (error) {
         console.log(error);
     }
