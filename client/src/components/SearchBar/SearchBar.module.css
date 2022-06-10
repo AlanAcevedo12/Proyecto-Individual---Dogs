@@ -1,0 +1,94 @@
+.SearchBarDiv{
+    margin: auto;
+    /* margin-top: 1rem; */
+    background-color: #85929E;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    height: 5rem;
+}
+
+#formBusqueda{
+    margin: auto;
+    grid-column: 1 / 5;
+    /*background-color: rebeccapurple;*/
+    width: 40%;
+    display: flex;
+    justify-content:space-between;
+}
+
+#inputBusqueda{
+    background-color:whitesmoke;
+    border: none;
+    height: 1.5rem;
+    width: 17rem;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#inputBusqueda:focus{
+    background-color: #CCD1D1;
+    border: none;
+}
+
+#inputBusqueda:hover{
+    background-color: #CCD1D1;
+}
+
+#botonBusqueda{
+    width: 7rem;
+    height: 1.6rem;
+    background-color: #5D6D7E;
+    border: none;
+    color:white;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#botonBusqueda:hover{
+    background-color: #34495E;
+    cursor: pointer;
+}
+
+.selectFiltro{
+    margin: auto;
+    width: 17rem;
+    height: 1.5rem;
+    background-color: whitesmoke;
+    border: none;
+    text-align: center;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+}
+
+.selectFiltro:hover{
+    background-color: #CCD1D1;
+}
+
+option{
+    font-weight: 1000;
+    background-color: whitesmoke;
+}
+
+#botonRefrescar{
+    width: 7rem;
+    height: 1.6rem;
+    background-color: #5D6D7E;
+    border: none;
+    color:white;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+    margin-right: ;
+}
+
+#botonRefrescar:hover{
+    background-color: #34495E;
+    cursor: pointer;
+}

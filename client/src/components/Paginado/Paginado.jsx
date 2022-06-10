@@ -1,12 +1,11 @@
 import React, {useState} from "react";
+import estilos from "./Paginado.module.css";
 
 export default function Home({cantidad, allDogs, paginado, paginaActual}){
     //console.log(cantPaginas);
     const numeros = [];
     const [nroPagina, setNroPagina] = useState(1);
     const cantTotal = Math.ceil(allDogs.length / cantidad);
-
-    console.log();
 
     for(let i = 1; i <=cantTotal; i++){
         numeros.push(i);
@@ -19,11 +18,11 @@ export default function Home({cantidad, allDogs, paginado, paginaActual}){
     }
 
     return(
-        <div className="PaginadoDiv">
-            <h1>Pagina: {paginaActual}</h1>
-            <div>
-                <button name="Principio" onClick={() => paginadoHandler(1)}>Principio</button>
-                <button name="Prev" onClick={() => paginadoHandler(paginaActual-1)}>Prev</button>
+        <div className={estilos.PaginadoDiv}>
+            {/* <h1>Pagina: {paginaActual}</h1> */}
+            <div id={estilos.contenedorBotones}>
+                <button class={estilos.botones} name="Principio" onClick={() => paginadoHandler(1)}>&lt;&lt;</button>
+                <button class={estilos.botones} name="Prev" onClick={() => paginadoHandler(paginaActual-1)}>&lt;</button>
                 {
                     numeros?.map(
                         (n) => {
@@ -31,14 +30,14 @@ export default function Home({cantidad, allDogs, paginado, paginaActual}){
                                 return
                             }else{
                                 return(
-                                    <button onClick={() => paginadoHandler(n)}>{n}</button>
+                                    <button class={paginaActual === n ? estilos.paginaActual : estilos.botones} onClick={() => paginadoHandler(n)}>{n}</button>
                                 )
                             }
                         }
                     )
                 }
-                <button name="Next" onClick={() => paginadoHandler(paginaActual+1)}>Next</button>
-                <button name="Final" onClick={() => paginadoHandler(cantTotal)}>Final</button>
+                <button class={estilos.botones} name="Next" onClick={() => paginadoHandler(paginaActual+1)}>&gt;</button>
+                <button class={estilos.botones} name="Final" onClick={() => paginadoHandler(cantTotal)}>&gt;&gt;</button>
             </div>
         </div>
     )

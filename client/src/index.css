@@ -5,9 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* font-family: Inkfree; */
+  
+  font-family: Quicksand;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1{
+  margin: 0;
+}
+
+@font-face {
+  font-family: Inkfree;
+  src: url("./resources/Inkfree.ttf");
+}
+
+@font-face {
+  font-family: Quicksand;
+  src: url("./resources/Quicksand_Book.otf");
 }

@@ -1,0 +1,25 @@
+.HomeDiv{
+    margin: 0;
+    /* background-image: url("../../resources/tableroFondo.jpg");
+    background-size:contain; */
+    background-color: #AEB6BF;
+    min-height: 100vh;
+}
+
+a{
+    text-decoration: none;
+}
+
+#cargando{
+    margin-top: 2rem;
+    width: 250px;
+    border-style: solid;
+    border-color: #2E4053;
+    border-width: 5px;
+}
+
+#cargandoh1{
+    color: #283747;
+    margin-top: 1rem;
+    font-size: 3rem;
+}

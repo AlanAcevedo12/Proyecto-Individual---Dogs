@@ -7,7 +7,9 @@ export default function CardContainer({dogs}){
 
     return(
         <div className={estilo.CardContainerDiv}>
-            <h1 id={estilo.tituloId}>soy un contenedor de perritos</h1>
+            <div id={estilo.contenedorTitulo}>
+                <h1 id={estilo.tituloId}>Dog breeds</h1>
+            </div>
             {Array.isArray(dogs) ? dogs.map(
                 (dog, i) => {
                     return <DogCard key={i} dog={dog}/>

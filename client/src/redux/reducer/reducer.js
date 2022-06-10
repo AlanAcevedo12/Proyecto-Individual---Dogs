@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS } from "../actions/actionsTypes";
+import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG } from "../actions/actionsTypes";
 
 
 const initialState = {
@@ -33,11 +33,17 @@ const rootReducer = (state = initialState, action) => {
                 tempers: action.payload
             }
         case GET_DOG_BY_TEMPER:
+            if(action.payload === "All")
+            return {
+                ...state, 
+                dogs: state.dogsLoaded
+            }
             return {
                 ...state,
                 dogs: state.dogsLoaded.filter(dog => {
-                    if(dog.temperament)
-                    return dog.temperament.includes(action.payload)
+                    if(dog.temperament){
+                        return dog.temperament.includes(action.payload);
+                    }
                 })
             }
         case GET_DOGS_BY_DB:
@@ -79,20 +85,12 @@ const rootReducer = (state = initialState, action) => {
                     dogs: ordenado.filter(o => "a" === "a")
                 }
             }
-            if(action.payload === "Peso Asc"){
+            if(action.payload === "Weight Asc"){
                 let ordenado = state.dogs.sort((a, b) => {
-                    if(a.weight.metric.length > 2){
-                        a = a.weight.metric.split(" - ");
-                        a = (parseInt(a[0]) + parseInt(a[1])) / 2;
-                    }else{
-                        a = parseInt(a.weight.metric);
-                    }
-                    if(b.weight.metric.length > 2){
-                        b = b.weight.metric.split(" - ");
-                        b = (parseInt(b[0]) + parseInt(b[1])) / 2;
-                    }else{
-                        b = parseInt(b.weight.metric);
-                    }  
+                    a = (parseInt(a.weight[0]) + parseInt(a.weight[1])) / 2;
+                    b = (parseInt(b.weight[0]) + parseInt(b.weight[1])) / 2;
+                    if(!a)  a=100;
+                    if(!b) b=100;
                     if(a > b) return 1;
                     if(a < b) return -1;
                     return 0;
@@ -101,6 +99,36 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     dogs: ordenado.filter(o => "a" === "a")
                 }
+            }
+            if(action.payload === "Weight Desc"){
+                let ordenado = state.dogs.sort((a, b) => {
+                    a = (parseInt(a.weight[0]) + parseInt(a.weight[1])) / 2;
+                    b = (parseInt(b.weight[0]) + parseInt(b.weight[1])) / 2;
+                    if(!a)  a=100;
+                    if(!b) b=100;
+                    if(a < b) return 1;
+                    if(a > b) return -1;
+                    return 0;
+                });
+                return {
+                    ...state,
+                    dogs: ordenado.filter(o => "a" === "a")
+                }
+            }
+        case SET_DOG:
+            return {
+                ...state,
+                dog: action.payload
+            }
+        case GET_DOG_BY_ID:
+            return {
+                ...state,
+                dog: action.payload
+            }
+        case EMPTY_DOG:
+            return {
+                ...state,
+                dog: action.payload
             }
         default: return state;
     }

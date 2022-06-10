@@ -1,0 +1,47 @@
+.PaginadoDiv{
+    /* background-color: red; */
+    height: 4rem;
+    margin: auto;
+    display: flex;
+}
+
+#contenedorBotones{
+    /* background-color: blue; */
+    width: 25%;
+    display: flex;
+    margin: auto;
+    margin-top: 1.5rem;
+    vertical-align: middle;
+    justify-content: center;
+    height: 2.5rem;
+    /* background-color: black; */
+}
+
+.botones{
+    height: 1.5rem;
+    background-color: rgba(10,10,10,0);
+    border:none;
+    cursor: pointer;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1.2rem;
+    color:#EBEDEF;
+    /* background-color: red; */
+    margin-top: 0.5rem;
+}
+
+.botones:hover{
+    color:#5D6D7E;
+}
+
+.paginaActual{
+    height: 1.8rem;
+    background-color: rgba(10,10,10,0);
+    border:none;
+    cursor: pointer;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1.4rem;
+    color:#2E4053;
+    /* background-color: aquamarine; */
+}

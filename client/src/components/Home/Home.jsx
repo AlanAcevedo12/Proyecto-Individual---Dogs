@@ -3,8 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllDogs, getAllTempers} from "../../redux/actions/actions";
 
 import CardContainer from "../CardContainer/CardContainer";
-import NavBar from "../NavBar/NavBar";
+import SearchBar from "../SearchBar/SearchBar";
 import Paginado from "../Paginado/Paginado";
+import NavBar from "../NavBar/NavBar";
+import estilos from "./Home.module.css";
+import gifCargando from "../../resources/loadingDog.gif";
 
 export default function Home(){
     const dispatch = useDispatch();
@@ -28,18 +31,15 @@ export default function Home(){
         }, [dispatch]
     );
 
-    if(dogs){
-        return(
-            <div className="HomeDiv">
-                <h1>HOME :D</h1>
-                <NavBar tempers={tempers} resetPagina={paginado}/>
-                <CardContainer dogs= {dogsItems} />
-                <Paginado
-                    cantidad={cantidad}
-                    allDogs={dogs}
-                    paginado={paginado}
-                    paginaActual={paginaActual} />
-            </div>
-        )
-    }
+    return(<div className={estilos.HomeDiv}>
+            <NavBar />
+            <SearchBar tempers={tempers} resetPagina={paginado} />
+
+        {dogs[0] ? (<><CardContainer dogs= {dogsItems} />
+            <Paginado
+                cantidad={cantidad}
+                allDogs={dogs}
+                paginado={paginado}
+                paginaActual={paginaActual}/></>) : (<><h1 id={estilos.cargandoh1}>Loading...</h1><img id={estilos.cargando} src={gifCargando} /></>)}
+        </div>)
 }
