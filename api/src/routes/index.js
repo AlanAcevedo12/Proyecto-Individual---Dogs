@@ -64,11 +64,35 @@ router.get("/dogs", async (req, res) => {
 });
 
 router.get("/dogs/:idRaza", async (req, res) => {
-    const {idRaza} = req.params;
+    let {idRaza} = req.params;
     try {
-        const dogById = await Dog.findByPk(idRaza, {include: Temper});
-        if(!dogById) return res.status(404).send("No encontrado");
+        if(idRaza.includes("db")){
+            idRaza = parseInt(idRaza.slice(2));
+            var dog = await Dog.findByPk(idRaza, {include: Temper});
+            console.log(dog);
+            const temp = [];
+            dog.tempers.map((t) => temp.push(t.name));
+            var dogById = {
+                name: dog.name,
+                weight: dog.weight,
+                height: dog.height,
+                temperament: temp.toString(),
+                life_span: dog.years 
+            }
+        }else{
+            const {data} = await axios.get(URL);
+            const dog = data.find(d => d.id === parseInt(idRaza));
+            var dogById = {
+                name: dog.name,
+                weight: dog.weight.metric.toString(),
+                height: dog.height.metric.toString(),
+                temperament: dog.temperament,
+                life_span: dog.life_span,
+                image: dog.image.url
+            }
+        }
         
+        if(!dogById) return res.status(404).send("No encontrado");
         res.send(dogById);
     } catch (error) {
         console.log(error);
