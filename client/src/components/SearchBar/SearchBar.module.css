@@ -3,7 +3,7 @@
     /* margin-top: 1rem; */
     background-color: #85929E;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     width: 90%;
     height: 5rem;
 }
@@ -56,7 +56,7 @@
 
 .selectFiltro{
     margin: auto;
-    width: 17rem;
+    width: 15rem;
     height: 1.5rem;
     background-color: whitesmoke;
     border: none;

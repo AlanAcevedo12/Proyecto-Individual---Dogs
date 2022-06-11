@@ -1,11 +1,12 @@
-import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG } from "../actions/actionsTypes";
+import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP } from "../actions/actionsTypes";
 
 
 const initialState = {
     dogsLoaded: [],     //Lista de perros cargados que vinieron de la API   NO CAMBIA
     dogs: [],           //Lista de perros que se muestan en home, va cambiando según se necesita. Ej: filtrar, buscar, etc.
     dog: {},
-    tempers: []
+    tempers: [],
+    breedGroups: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -33,10 +34,16 @@ const rootReducer = (state = initialState, action) => {
                 tempers: action.payload
             }
         case GET_DOG_BY_TEMPER:
-            if(action.payload === "All")
-            return {
-                ...state, 
-                dogs: state.dogsLoaded
+            if(action.payload === "All"){
+                let ordenado = state.dogsLoaded.sort((a, b) => {
+                    if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                    if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    return 0;
+                });
+                return {
+                    ...state, 
+                    dogs: ordenado
+                }
             }
             return {
                 ...state,
@@ -68,7 +75,7 @@ const rootReducer = (state = initialState, action) => {
                     if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                     return 0;
                 });
-                console.log(ordenado);
+                //console.log(ordenado);
                 return {
                     ...state,
                     dogs: ordenado.filter(o => "a" === "a")
@@ -129,6 +136,31 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dog: action.payload
+            }
+        case GET_ALL_GROUPS:
+            return{
+                ...state,
+                breedGroups: action.payload
+            }
+        case GET_DOG_BY_GROUP:
+            if(action.payload === "All"){
+                let ordenado = state.dogsLoaded.sort((a, b) => {
+                    if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                    if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    return 0;
+                });
+                return {
+                    ...state, 
+                    dogs: ordenado
+                }
+            }
+            return {
+                ...state,
+                dogs: state.dogsLoaded.filter(dog => {
+                    if(dog.breed_group){
+                        return dog.breed_group.includes(action.payload);
+                    }
+                })
             }
         default: return state;
     }

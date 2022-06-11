@@ -151,3 +151,35 @@
     font-size: 3rem;
     font-weight: bolder;
 }
+
+.inputCreateNR{
+    background-color:#CCD1D1;
+    border: none;
+    height: 1.5rem;
+    width: 17rem;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.inputCreateNR:hover{
+    background-color: #B2BABB;
+}
+
+.selectTempsNR{
+    /* margin: auto; */
+    width: 17rem;
+    height: 1.5rem;
+    background-color: #CCD1D1;
+    border: none;
+    text-align: center;
+    font-family: Quicksand;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #283747;
+}
+
+.selectTempsNR:hover{
+    background-color: #B2BABB;
+}

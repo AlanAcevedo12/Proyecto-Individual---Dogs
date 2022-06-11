@@ -1,9 +1,8 @@
 .HomeDiv{
     margin: 0;
-    /* background-image: url("../../resources/tableroFondo.jpg");
-    background-size:contain; */
     background-color: #AEB6BF;
     min-height: 100vh;
+    /* background-image: url("../../resources/patas.png"); */
 }
 
 a{

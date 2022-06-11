@@ -6,11 +6,13 @@ import NavBar from "../NavBar/NavBar";
 import estilos from "./Create.module.css";
 
 export default function Create(){
+    document.title = "Henry Dogs - Create";
     const dispatch = useDispatch();
 
     const tempersList = useSelector((state) => state.tempers);
+    const breedGroupList = useSelector((state) => state.breedGroups);
     const [input, setInput] = useState({name: "", minHeight:"", maxHeight:"", minWeight:"", maxWeight:"",
-    minLifeSpan:"", maxLifeSpan:"", temperaments: [], cantTemps:["1"]});
+    minLifeSpan:"", maxLifeSpan:"", temperaments: [], cantTemps:["1"], image:"", breedGroup:"Select breed group", origin:""});
     const [errores, setErrores] = useState({name: "", minHeight:"", maxHeight:"", minWeight:"", maxWeight:"",
     minLifeSpan:"", maxLifeSpan:"", temperaments: []});
     const [botonBloqueado, setBotonBloqueado] = useState("disabled");
@@ -24,7 +26,7 @@ export default function Create(){
                 setBotonBloqueado("disabled");
             }else setBotonBloqueado("");
             if(!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight
-                || !input.minLifeSpan || !input.maxLifeSpan){
+                || !input.minLifeSpan || !input.maxLifeSpan || input.breedGroup === "Select breed group"){
                     setBotonBloqueado("disabled");
             }
         }
@@ -62,12 +64,15 @@ export default function Create(){
 
     function onSubmitHandler(e){
         e.preventDefault();
-        const dog = {name: "", height:[], weight:[], years: "", temp:[]};
+        const dog = {name: "", height:[], weight:[], years: "", temp:[], image:"", breed_group:"", origin:""};
         dog.name = input.name;
         dog.height = [input.minHeight, input.maxHeight];
         dog.weight = [input.minWeight, input.maxWeight];
         dog.years = `${input.minLifeSpan} - ${input.maxLifeSpan} years`;
         dog.temp = input.temperaments;
+        dog.image = input.image;
+        dog.breed_group = input.breedGroup;
+        dog.origin = input.origin;
         console.log(dog);
         dispatch(setDog(dog));
         setEnviado(true);
@@ -87,6 +92,19 @@ export default function Create(){
                     <input class={errores.name ? estilos.inputCreateError : estilos.inputCreate} 
                     type="text" name="name" value={input.name} onChange={onChangeHandler} placeholder="Breed name..."/>
                     {errores.name && (<p class={estilos.indicador}>{errores.name}</p>)}
+                </div>
+                <div class={estilos.inputYLabel}>
+                    <label>Breed group:</label>
+                    <select class={estilos.selectTemps} name="breedGroup" value={input.breedGroup} onChange={onChangeHandler}>
+                        <option key={0}>Select breed group</option>
+                        {
+                            breedGroupList?.map(
+                                (bg, i) => {
+                                    return (<option key={i}>{bg}</option>)
+                                }
+                            )
+                        }
+                    </select>
                 </div>
                 <div class={estilos.inputYLabel}>
                     <label>Min height:</label>
@@ -125,8 +143,24 @@ export default function Create(){
                     {errores.maxLifeSpan && (<p class={estilos.indicador}>{errores.maxLifeSpan}</p>)}
                 </div>
                 <div class={estilos.inputYLabel}>
+                    <label>Origin:</label>
+                    <input type="text" name="origin" value={input.origin} onChange={onChangeHandler}
+                    class={estilos.inputCreateNR} placeholder="Origin..."/>
+                </div>
+                <div class={estilos.inputYLabel}>
+                    <label>Image:</label>
+                    <input type="text" name="image" value={input.image} onChange={onChangeHandler}
+                    class={estilos.inputCreateNR} placeholder="Imgae url..."/>
+                </div>
+                {/* <div class={estilos.inputYLabel}>
+                    <label>Breed group:</label>
+                    <input type="text" name="breedGroup" value={input.breedGroup} onChange={onChangeHandler}
+                    class={estilos.inputCreate} placeholder="Breed group..."/>
+                </div> */}
+                
+                <div class={estilos.inputYLabel}>
                     <label>Number of temperaments:</label>
-                    <select class={estilos.selectTemps} name="cantTemps" value={input.cantTemps[input.cantTemps.length - 1]} onChange={onChangeHandler}>
+                    <select class={estilos.selectTempsNR} name="cantTemps" value={input.cantTemps[input.cantTemps.length - 1]} onChange={onChangeHandler}>
                     {
                         arrNroTemps.map(
                             (c, i) => {
@@ -141,7 +175,7 @@ export default function Create(){
                         input.cantTemps.map(
                             (c, i) => {
                                 return (
-                                    <select class={estilos.selectTemps} name="temperaments" value={input.temperaments[i]} 
+                                    <select class={estilos.selectTempsNR} name="temperaments" value={input.temperaments[i]} 
                                     onChange={(e) => onChangeTempHandler(e, i)} key={i}>
                                         <option key={0}>Select temperament</option>
                                         {

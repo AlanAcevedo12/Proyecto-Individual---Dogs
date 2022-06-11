@@ -6,6 +6,8 @@ import { getDogById } from "../../redux/actions/actions";
 import gifCargando from "../../resources/loadingDog.gif";
 
 export default function DogDetails({id}){
+    document.title = "Henry Dogs - Details";
+
     const dispatch = useDispatch();
     const dog = useSelector((state) => state.dog);
     
@@ -13,7 +15,9 @@ export default function DogDetails({id}){
         dispatch(getDogById(id));
     },[dispatch]);
 
-    if(!dog.hasOwnProperty("image")) dog.image =  "https://s2.coinmarketcap.com/static/img/coins/200x200/14447.png";
+    if(!dog.image) dog.image =  "https://www.petdarling.com/wp-content/uploads/2020/11/razas-de-perros.jpg";
+    if(!dog.origin) dog.origin = "No associated origin";
+    if(!dog.temperament) dog.temperament = "No associated temperament";
 
     return(
         <div className={estilos.DogDetailsDiv}>
@@ -24,8 +28,12 @@ export default function DogDetails({id}){
                 <img id={estilos.imagen} src={dog.image}/>
                 <div id={estilos.contenedorDatos}>
                     <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Temperaments: </h2>
-                        <h3 class={estilos.textoDato}>{dog.temperament}</h3>
+                        <h2 class={estilos.tituloDato}>Breed group: </h2>
+                        <h3 class={estilos.textoDato}>{dog.breed_group}</h3>
+                    </div>
+                    <div class={estilos.datos}>
+                        <h2 class={estilos.tituloDato}>Origin: </h2>
+                        <h3 class={estilos.textoDato}>{dog.origin}</h3>
                     </div>
                     <div class={estilos.datos}>
                         <h2 class={estilos.tituloDato}>Height: </h2>
@@ -38,6 +46,10 @@ export default function DogDetails({id}){
                     <div class={estilos.datos}>
                         <h2 class={estilos.tituloDato}>Lifespan: </h2>
                         <h3 class={estilos.textoDato}>{dog.life_span}</h3>
+                    </div>
+                    <div class={estilos.datos}>
+                        <h2 class={estilos.tituloDato}>Temperaments: </h2>
+                        <h3 class={estilos.textoDato}>{dog.temperament}</h3>
                     </div>
                 </div>
                 

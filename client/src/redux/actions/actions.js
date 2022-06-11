@@ -1,5 +1,5 @@
 import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_ALL_TEMPERS, 
-    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG } from "./actionsTypes";
+    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP } from "./actionsTypes";
 
 import axios from "axios";
 
@@ -74,6 +74,20 @@ export const emptyDog = () => dispatch => {
         payload: {}
     })
 }
+
+export const getAllGroups = () => dispatch => {
+    return fetch(`${URL}/groups`)
+    .then(respuesta => respuesta.json())
+    .then(json => {return dispatch({type: GET_ALL_GROUPS, payload: json})})
+}
+
+export const getDogByGroup = (group) => {
+    return {
+        type: GET_DOG_BY_GROUP,
+        payload: group
+    }
+}
+
 
 
 
