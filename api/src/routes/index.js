@@ -3,7 +3,7 @@ const router = Router();
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {Dog, Temper} = require("../db.js");
+const {Dog, Temper, Group} = require("../db.js");
 
 const axios = require("axios");
 const { Op } = require("../db");
@@ -25,19 +25,21 @@ router.get("/dogs", async (req, res) => {
                 id: d.id,
                 name: d.name,
                 bred_for: d.bred_for,
-                bred_group: d.bred_group,
                 life_span: d.life_span,
                 temperament: d.temperament,
                 reference_image_id: d.reference_image_id,
                 image: d.image.url,
                 weight: d.weight.metric.length > 2 ? d.weight.metric.split(" - ") : [d.weight.metric, d.weight.metric],
                 height: d.height.metric.length > 2 ? d.height.metric.split(" - ") : [d.height.metric, d.height.metric],  //Devuelve como array las alturas
+                origin: d.origin,
+                breed_group: d.breed_group
             })
         }
     )
     let allDogs = [];
     try {
-        let dogsDb = await Dog.findAll({include: Temper});
+        let dogsDb = await Dog.findAll({include: [{model: Temper},{model: Group}]});
+        console.log(dogsDb);
         if(dogsDb.length) {
             dogsDb.map(
                 (dog) => {
@@ -49,7 +51,10 @@ router.get("/dogs", async (req, res) => {
                         height: dog.height,
                         weight: dog.weight,
                         life_span: dog.years,
-                        temperament: t.join(", ")
+                        temperament: t.join(", "),
+                        image: dog.image,
+                        origin: dog.origin,
+                        breed_group: dog.group.name
                     }
                     allDogs.push(d);
                 }
@@ -68,16 +73,19 @@ router.get("/dogs/:idRaza", async (req, res) => {
     try {
         if(idRaza.includes("db")){
             idRaza = parseInt(idRaza.slice(2));
-            var dog = await Dog.findByPk(idRaza, {include: Temper});
+            var dog = await Dog.findByPk(idRaza, {include: [{model: Temper},{model: Group}]});
             console.log(dog);
             const temp = [];
             dog.tempers.map((t) => temp.push(t.name));
             var dogById = {
                 name: dog.name,
-                weight: dog.weight,
-                height: dog.height,
+                weight: dog.weight.join(" - "),
+                height: dog.height.join(" - "),
                 temperament: temp.toString(),
-                life_span: dog.years 
+                life_span: dog.years,
+                image: dog.image,
+                origin: dog.origin,
+                breed_group: dog.group.name
             }
         }else{
             const {data} = await axios.get(URL);
@@ -88,7 +96,9 @@ router.get("/dogs/:idRaza", async (req, res) => {
                 height: dog.height.metric.toString(),
                 temperament: dog.temperament,
                 life_span: dog.life_span,
-                image: dog.image.url
+                image: dog.image.url,
+                origin: dog.origin,
+                breed_group: dog.breed_group
             }
         }
         
@@ -100,7 +110,7 @@ router.get("/dogs/:idRaza", async (req, res) => {
 });
 
 router.post("/dogs", async (req, res) => {
-    const {name, height, weight, years, temp} = req.body;
+    const {name, height, weight, years, temp, breed_group} = req.body;
     console.log(req.body);
     try {
         const dog = await Dog.create(req.body);
@@ -108,6 +118,8 @@ router.post("/dogs", async (req, res) => {
             const tempe = await Temper.findOne({where: {"name": temp[i]}})
             dog.addTempers([tempe]);
         }
+        const group = await Group.findOne({where: {"name": breed_group}});
+        dog.setGroup(group);
         res.json({a:"Se agregó exitosamente: ",dog});
     } catch (error) {
         console.log(error);
@@ -152,6 +164,41 @@ router.get("/temperaments", async (req, res) => {
         return res.send(tempApi);
     } catch (error) {
         console.log(error);
+    }
+});
+
+router.get("/groups", async (req, res) => {
+    try{
+        let groups = await Group.findAll();
+        if(groups.length){
+            let groupsDb = [];
+            groups.map(
+                (g) => {
+                    groupsDb.push(g.name);
+                }
+            );
+            groupsDb.sort();
+            return res.send(groupsDb);
+        }
+        //De la API
+        let {data} = await axios(URL);
+        let groupsApi = [];
+        data?.map(
+            (d) => {
+                if(d.breed_group){
+                    let g = d.breed_group;
+                    if(!groupsApi.includes(g)) groupsApi.push(g);
+                }
+            }
+        )
+        for(let i = 0; i < groupsApi.length; i++){
+            let p = await Group.create({"name":groupsApi[i]})
+        }
+        console.log("De la API");
+        groupsApi.sort();
+        return res.send(groupsApi);
+    }catch(e){
+        console.log(e);
     }
 });
 
