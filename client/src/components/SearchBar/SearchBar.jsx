@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch} from "react-redux";
 import { getAllDogs, getDogByApi, getDogByDb, getDogByGroup, getDogByName, getDogByTemper, orderDogs } from "../../redux/actions/actions";
 import estilos from "./SearchBar.module.css";
 

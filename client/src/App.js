@@ -5,11 +5,9 @@ import Landing from './components/Landing';
 import DogDetails from "./components/DogDetails/DogDetails";
 import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
-import NavBar from "./components/NavBar/NavBar";
+import About from "./components/About/About";
 
 function App() {
-  const dogs = useSelector((state) => state.dogs);
-
   return (
     <div className="App">
       <Switch>
@@ -23,16 +21,10 @@ function App() {
                  }}
           />
           <Route path="/create"><Create /></Route>
+          <Route path="/about"><About /></Route>
       </Switch>
     </div>
   );
 }
 
 export default App;
-
-
-
-/*
-<DogDetails 
-                    dog={dogs.filter((d) => d.id == match.params.dogId)}/>
-                    */

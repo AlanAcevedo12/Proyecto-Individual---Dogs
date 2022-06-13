@@ -4,7 +4,6 @@ import estilo from "./CardContainer.module.css";
 
 
 export default function CardContainer({dogs}){
-
     return(
         <div className={estilo.CardContainerDiv}>
             <div id={estilo.contenedorTitulo}>

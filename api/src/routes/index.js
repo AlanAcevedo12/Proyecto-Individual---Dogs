@@ -61,7 +61,10 @@ router.get("/dogs", async (req, res) => {
             );
         }
         allDogs = allDogs.concat(dogsAPI);
-        if(name) allDogs = allDogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()));
+        if(name){
+            allDogs = allDogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
+            if(!allDogs.length) allDogs = ["Not Found"]
+        };
         res.send(allDogs);
     } catch (error) {
         console.log(error);

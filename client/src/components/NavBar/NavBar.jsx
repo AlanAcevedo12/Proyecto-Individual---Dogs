@@ -19,7 +19,7 @@ export default function NavBar(){
             </div>
             <div class={estilos.opciones}>
             <img src={patas}/>
-                <Link to="/home">
+                <Link to="/about">
                     <h1 class={estilos.tituloId}>About</h1>
                 </Link>
             </div>

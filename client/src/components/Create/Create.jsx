@@ -1,6 +1,5 @@
 import {React, useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from "react-router-dom";
 import { getAllTempers, setDog } from "../../redux/actions/actions";
 import NavBar from "../NavBar/NavBar";
 import estilos from "./Create.module.css";
@@ -56,7 +55,7 @@ export default function Create(){
 
     function onChangeTempHandler(e, i){
         let arrTemp = input.temperaments;
-        console.log(e.target.value);
+        // console.log(e.target.value);
         arrTemp[i] = e.target.value;
         setInput( {...input, [e.target.name]:arrTemp});
         return;
@@ -207,7 +206,7 @@ export default function Create(){
 }
 
 export function validar(input, errores, globalInput){
-    console.log("valido",input);
+    // console.log("valido",input);
     if(errores[input.name]) errores[input.name] = "";
     switch(input.name){
         case "name":

@@ -8,6 +8,7 @@ import Paginado from "../Paginado/Paginado";
 import NavBar from "../NavBar/NavBar";
 import estilos from "./Home.module.css";
 import gifCargando from "../../resources/loadingDog.gif";
+import noEncontrado from "../../resources/notfound.png";
 
 export default function Home(){
     document.title = "Henry Dogs - Home";
@@ -38,11 +39,13 @@ export default function Home(){
             <NavBar />
             <SearchBar tempers={tempers} resetPagina={paginado} breedGroups={breedGroups}/>
 
-        {dogs[0] ? (<><CardContainer dogs= {dogsItems} />
+        {dogs[0] === "Not Found" ? (<><h1 id={estilos.cargandoh1}>Breed not found</h1><img id={estilos.cargando} src={noEncontrado} /></>) 
+        : dogs[0] ? (<><CardContainer dogs= {dogsItems} />
             <Paginado
                 cantidad={cantidad}
                 allDogs={dogs}
                 paginado={paginado}
-                paginaActual={paginaActual}/></>) : (<><h1 id={estilos.cargandoh1}>Loading...</h1><img id={estilos.cargando} src={gifCargando} /></>)}
+                paginaActual={paginaActual}/></>) 
+                : (<><h1 id={estilos.cargandoh1}>Loading...</h1><img id={estilos.cargando} src={gifCargando} /></>)}
         </div>)
 }

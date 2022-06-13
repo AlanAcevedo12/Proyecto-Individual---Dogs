@@ -16,7 +16,7 @@ export default function DogCard({dog}){
                 <img id={estilo.imagenId} src={dog.image} alt="Fotito Perrito" />
             </div>
             <h1 id={estilo.nombreId}>{dog.name}</h1>
-            <span class={estilo.datos}>{dog.breed_group}</span>
+            <span class={estilo.datos}>{dog.breed_group ? dog.breed_group : "Unknown"}</span>
             <div id={estilo.divDatos}>
                 <div class={estilo.datosYTitulo}>
                    <span class={estilo.tituloDatos}>Temperament:</span>

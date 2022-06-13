@@ -25,12 +25,13 @@ export default function Home({cantidad, allDogs, paginado, paginaActual}){
                 <button class={estilos.botones} name="Prev" onClick={() => paginadoHandler(paginaActual-1)}>&lt;</button>
                 {
                     numeros?.map(
-                        (n) => {
+                        (n, i) => {
                             if(n > paginaActual + 2 || n < paginaActual - 2){
                                 return
                             }else{
                                 return(
-                                    <button class={paginaActual === n ? estilos.paginaActual : estilos.botones} onClick={() => paginadoHandler(n)}>{n}</button>
+                                    <button class={paginaActual === n ? estilos.paginaActual : estilos.botones} 
+                                    key={i} onClick={() => paginadoHandler(n)}>{n}</button>
                                 )
                             }
                         }
