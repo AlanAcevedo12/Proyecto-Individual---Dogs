@@ -1,5 +1,5 @@
 import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_ALL_TEMPERS, 
-    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP } from "./actionsTypes";
+    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP, DELETE_CREATED } from "./actionsTypes";
 
 import axios from "axios";
 
@@ -86,6 +86,14 @@ export const getDogByGroup = (group) => {
         type: GET_DOG_BY_GROUP,
         payload: group
     }
+}
+
+export const deleteCreated = (id) => async dispatch => {
+    let {data} = axios.delete(`${URL}/dogs/${id}`)
+    return dispatch ({
+        type: DELETE_CREATED,
+        payload: data
+    })
 }
 
 

@@ -39,7 +39,6 @@ router.get("/dogs", async (req, res) => {
     let allDogs = [];
     try {
         let dogsDb = await Dog.findAll({include: [{model: Temper},{model: Group}]});
-        console.log(dogsDb);
         if(dogsDb.length) {
             dogsDb.map(
                 (dog) => {
@@ -65,7 +64,7 @@ router.get("/dogs", async (req, res) => {
             allDogs = allDogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))
             if(!allDogs.length) allDogs = ["Not Found"]
         };
-        res.send(allDogs);
+        res.status(200).send(allDogs);
     } catch (error) {
         console.log(error);
     }    
@@ -114,7 +113,6 @@ router.get("/dogs/:idRaza", async (req, res) => {
 
 router.post("/dogs", async (req, res) => {
     const {name, height, weight, years, temp, breed_group} = req.body;
-    console.log(req.body);
     try {
         const dog = await Dog.create(req.body);
         for(let i = 0; i < temp.length; i++){
@@ -123,10 +121,8 @@ router.post("/dogs", async (req, res) => {
         }
         const group = await Group.findOne({where: {"name": breed_group}});
         dog.setGroup(group);
-        res.json({a:"Se agregó exitosamente: ",dog});
-    } catch (error) {
-        console.log(error);
-    }
+        res.status(200).json({a:"Se agregó exitosamente: ",dog});
+    } catch (error) {}
 });
 
 router.get("/temperaments", async (req, res) => {
@@ -205,6 +201,14 @@ router.get("/groups", async (req, res) => {
     }
 });
 
+router.delete("/dogs/:idRaza", async (req, res) => {
+    const {idRaza} = req.params;
+    console.log(idRaza);
+    try{
+        const dogDestroyed = await Dog.destroy({where:{"id":idRaza}});
+        res.status(200).send("Deleted");
+    }catch(e){console.log(e)}
+});
 
 
 module.exports = router;

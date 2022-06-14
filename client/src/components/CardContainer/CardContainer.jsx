@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import DogCard from "../DogCard/DogCard";
 import estilo from "./CardContainer.module.css";
 

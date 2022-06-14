@@ -2,7 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import estilos from "./DogDetails.module.css";
 import NavBar from "../NavBar/NavBar"
-import { getDogById } from "../../redux/actions/actions";
+import { deleteCreated, getDogById } from "../../redux/actions/actions";
+import { Link } from "react-router-dom";
 import gifCargando from "../../resources/loadingDog.gif";
 
 export default function DogDetails({id}){
@@ -18,6 +19,12 @@ export default function DogDetails({id}){
     if(!dog.image) dog.image =  "https://www.petdarling.com/wp-content/uploads/2020/11/razas-de-perros.jpg";
     if(!dog.origin) dog.origin = "No associated origin";
     if(!dog.temperament) dog.temperament = "No associated temperament";
+
+    function deleteDogHandler(){
+        const idRaza = id.slice(2);
+        console.log(idRaza);
+        dispatch(deleteCreated(idRaza));
+    }
 
     return(
         <div className={estilos.DogDetailsDiv}>
@@ -51,6 +58,11 @@ export default function DogDetails({id}){
                         <h2 class={estilos.tituloDato}>Temperaments: </h2>
                         <h3 class={estilos.textoDato}>{dog.temperament}</h3>
                     </div>
+                    {
+                        id.includes("db") ? 
+                        (<div><Link to="/home" class={estilos.link}><h2 id={estilos.delete} onClick={deleteDogHandler}>Delete</h2></Link></div>) :
+                        ""
+                    }
                 </div>
                 
             </div>) : (<><h1 id={estilos.cargandoh1}>Loading...</h1><img id={estilos.cargando} src={gifCargando} /></>)}

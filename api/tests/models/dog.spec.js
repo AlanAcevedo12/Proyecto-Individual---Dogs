@@ -1,6 +1,15 @@
 const { Dog, conn } = require('../../src/db.js');
 const { expect } = require('chai');
 
+const dog = {
+  "name": "b",
+  "height": ["30", "40"],
+  "weight": ["60", "80"],
+  "years": "12 - 20 years",
+  "image": "soy la imagen",
+  "origin": "Argentina",
+};
+
 describe('Dog model', () => {
   before(() => conn.authenticate()
     .catch((err) => {
@@ -9,14 +18,17 @@ describe('Dog model', () => {
   describe('Validators', () => {
     beforeEach(() => Dog.sync({ force: true }));
     describe('name', () => {
-      it('should throw an error if name is null', (done) => {
+      it('Debería arrojar error si los datos son inválidos', (done) => {
         Dog.create({})
-          .then(() => done(new Error('It requires a valid name')))
+          .then(() => done(new Error('Requiere datos validos')))
           .catch(() => done());
       });
-      it('should work when its a valid name', () => {
+      it('Debería funcionar con un nombre valido', () => {
         Dog.create({ name: 'Pug' });
       });
+      it("Se debería crear la raza si los datos son correctos", () => {
+        Dog.create(dog);
+      })
     });
   });
 });

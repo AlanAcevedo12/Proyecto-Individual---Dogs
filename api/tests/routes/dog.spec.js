@@ -1,24 +1,49 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { expect } = require('chai');
 const session = require('supertest-session');
+const request = require('supertest');
 const app = require('../../src/app.js');
 const { Dog, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const dog = {
-  name: 'Pug',
+  "name": "dog",
+  "height": ["30", "40"],
+  "weight": ["60", "80"],
+  "years": "12 - 20 years",
+  "temp": ["Gay", "Happy"],
+  "image": "soy la imagen",
+  "origin": "Argentina",
+  "breed_group": "Toy"
 };
 
-describe('Videogame routes', () => {
+describe('Rutas de raza', () => {
   before(() => conn.authenticate()
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   }));
-  beforeEach(() => Dog.sync({ force: true })
-    .then(() => Dog.create(dog)));
+  beforeEach(() => Dog.sync({ force: true }))
+  describe('GET /temperaments', () => {
+    it('El status debe ser 200 al conectarse a una ruta', async () => {
+      const res = await request(app).get('/temperaments');
+    }
+    );
+  });
   describe('GET /dogs', () => {
-    it('should get 200', () =>
-      agent.get('/dogs').expect(200)
+    it('El status debe ser 200 al conectarse a una ruta', async () => {
+      const res = await request(app).get('/dogs');
+    }
+    );
+  });
+  describe('GET /groups', () => {
+    it('El status debe ser 200 al conectarse a una ruta', async () => {
+      const res = await request(app).get('/temperaments');
+    }
+    );
+  });
+  describe('GET /dogs/1', () => {
+    it('El status debe ser 200 al conectarse a una ruta', async () => {
+      const res = await request(app).get('/temperaments');
+    }
     );
   });
 });

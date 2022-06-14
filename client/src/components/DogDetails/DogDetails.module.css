@@ -86,3 +86,18 @@
     margin-top: 1rem;
     font-size: 3rem;
 }
+
+.link{
+    color:#E74C3C;
+}
+
+.link:hover{
+    color: #943126;
+}
+
+#delete{
+    /* background-color: blue; */
+    width: 40%;
+    margin: auto;
+    margin-bottom: 1rem;
+}

@@ -10,3 +10,4 @@ export const GET_DOG_BY_ID = "GET_DOG_BY_ID";
 export const EMPTY_DOG = "EMPTY_DOG";
 export const GET_ALL_GROUPS = "GET_ALL_GROUPS";
 export const GET_DOG_BY_GROUP = "GET_DOG_BY_GROUP";
+export const DELETE_CREATED = "DELETE_CREATED";
