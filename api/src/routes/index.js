@@ -129,7 +129,6 @@ router.get("/temperaments", async (req, res) => {
     try {
         let temperaments = await Temper.findAll();
         if(temperaments.length){
-            console.log("De la DB");
             let tempDb = [];
             temperaments.map(
                 (t) => {
@@ -158,7 +157,6 @@ router.get("/temperaments", async (req, res) => {
         for(let i = 0; i < tempApi.length; i++){
             let p = await Temper.create({"name":tempApi[i]})
         }
-        console.log("De la API");
         tempApi.sort();
         return res.send(tempApi);
     } catch (error) {
@@ -193,7 +191,6 @@ router.get("/groups", async (req, res) => {
         for(let i = 0; i < groupsApi.length; i++){
             let p = await Group.create({"name":groupsApi[i]})
         }
-        console.log("De la API");
         groupsApi.sort();
         return res.send(groupsApi);
     }catch(e){
@@ -203,7 +200,6 @@ router.get("/groups", async (req, res) => {
 
 router.delete("/dogs/:idRaza", async (req, res) => {
     const {idRaza} = req.params;
-    console.log(idRaza);
     try{
         const dogDestroyed = await Dog.destroy({where:{"id":idRaza}});
         res.status(200).send("Deleted");
