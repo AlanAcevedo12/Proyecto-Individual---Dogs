@@ -16,7 +16,7 @@ export default function DogDetails({id}){
         dispatch(getDogById(id));
     },[dispatch]);
 
-    if(!dog.image) dog.image =  "https://www.petdarling.com/wp-content/uploads/2020/11/razas-de-perros.jpg";
+    if(!dog.image) dog.image =  "https://s2.coinmarketcap.com/static/img/coins/200x200/14447.png";
     if(!dog.origin) dog.origin = "No associated origin";
     if(!dog.temperament) dog.temperament = "No associated temperament";
 

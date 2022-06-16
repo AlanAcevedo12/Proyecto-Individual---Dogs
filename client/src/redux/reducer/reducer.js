@@ -2,8 +2,8 @@ import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG
 
 
 const initialState = {
-    dogsLoaded: [],     //Lista de perros cargados que vinieron de la API   NO CAMBIA
-    dogs: [],           //Lista de perros que se muestan en home, va cambiando según se necesita. Ej: filtrar, buscar, etc.
+    dogsLoaded: [],    
+    dogs: [],          
     dog: {},
     tempers: [],
     breedGroups: []

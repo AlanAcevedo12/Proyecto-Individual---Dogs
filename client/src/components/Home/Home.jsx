@@ -11,7 +11,7 @@ import gifCargando from "../../resources/loadingDog.gif";
 import noEncontrado from "../../resources/notfound.png";
 
 export default function Home(){
-    document.title = "Henry Dogs - Home";
+    document.title = "Henry Dogs";
     const dispatch = useDispatch();
     const dogs = useSelector((state) => state.dogs);
     const tempers = useSelector((state) => state.tempers);
