@@ -87,17 +87,43 @@
     font-size: 3rem;
 }
 
-.link{
+.linkDel{
     color:#E74C3C;
 }
 
-.link:hover{
+.linkDel:hover{
     color: #943126;
+}
+
+.linkEdit{
+    color:#2980B9;
+}
+
+.linkEdit:hover{
+    color: #1A5276;
 }
 
 #delete{
     /* background-color: blue; */
-    width: 40%;
     margin: auto;
+    /* margin-bottom: 1rem; */
+}
+
+#contenedorEdicion{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: #AEB6BF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.botonesEdicion{
+    /* background-color: aqua; */
+    width: 30%;
+    text-align: center;
     margin-bottom: 1rem;
+    margin-top: 1rem;
 }

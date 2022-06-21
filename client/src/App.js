@@ -6,6 +6,7 @@ import DogDetails from "./components/DogDetails/DogDetails";
 import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
 import About from "./components/About/About";
+import Edit from "./components/Edit/Edit";
 
 function App() {
   return (
@@ -22,6 +23,13 @@ function App() {
           />
           <Route path="/create"><Create /></Route>
           <Route path="/about"><About /></Route>
+          <Route path="/edit/:dogId"
+                 render={({match}) => {
+                  return (
+                    <Edit id={match.params.dogId}/>
+                  )
+                 }}
+          />
       </Switch>
     </div>
   );

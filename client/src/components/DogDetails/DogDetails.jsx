@@ -19,10 +19,11 @@ export default function DogDetails({id}){
     if(!dog.image) dog.image =  "https://s2.coinmarketcap.com/static/img/coins/200x200/14447.png";
     if(!dog.origin) dog.origin = "No associated origin";
     if(!dog.temperament) dog.temperament = "No associated temperament";
+    if(!dog.breed_group) dog.breed_group = "Unknown"
+    console.log(dog);
 
     function deleteDogHandler(){
         const idRaza = id.slice(2);
-        console.log(idRaza);
         dispatch(deleteCreated(idRaza));
     }
 
@@ -58,12 +59,21 @@ export default function DogDetails({id}){
                         <h2 class={estilos.tituloDato}>Temperaments: </h2>
                         <h3 class={estilos.textoDato}>{dog.temperament}</h3>
                     </div>
+                </div>
                     {
                         id.includes("db") ? 
-                        (<div><Link to="/home" class={estilos.link}><h2 id={estilos.delete} onClick={deleteDogHandler}>Delete</h2></Link></div>) :
+                        (
+                            <div id={estilos.contenedorEdicion}>
+                                <div class={estilos.botonesEdicion}><Link to="/home" class={estilos.linkDel}>
+                                    <h2 id={estilos.delete} onClick={deleteDogHandler}>Delete</h2>
+                                </Link></div>
+                                <div class={estilos.botonesEdicion}><Link to={`/edit/${id}`} class={estilos.linkEdit}>
+                                    <h2 id={estilos.delete} onClick="">Edit</h2>
+                                </Link></div>
+                            </div>
+                        ) :
                         ""
                     }
-                </div>
                 
             </div>) : (<><h1 id={estilos.cargandoh1}>Loading...</h1><img id={estilos.cargando} src={gifCargando} /></>)}
         </div>

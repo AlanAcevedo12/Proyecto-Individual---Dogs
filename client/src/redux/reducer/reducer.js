@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP, DELETE_CREATED } from "../actions/actionsTypes";
+import { GET_ALL_DOGS, GET_ALL_TEMPERS, GET_DOGS_BY_DB, GET_DOG_BY_NAME, GET_DOG_BY_TEMPER, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP, DELETE_CREATED, UPDATE_DOG } from "../actions/actionsTypes";
 
 
 const initialState = {
@@ -163,6 +163,11 @@ const rootReducer = (state = initialState, action) => {
                 })
             }
         case DELETE_CREATED:
+            return{
+                ...state,
+                dog: action.payload
+            }
+        case UPDATE_DOG:
             return{
                 ...state,
                 dog: action.payload

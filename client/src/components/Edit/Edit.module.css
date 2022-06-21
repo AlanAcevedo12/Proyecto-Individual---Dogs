@@ -1,0 +1,153 @@
+.inputCreate{
+    background-color:whitesmoke;
+    border: none;
+    height: 1.5rem;
+    width: 17rem;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.inputCreate:hover{
+    background-color: #CCD1D1;
+}
+
+.inputCreateError{
+    background-color:#F5B7B1;
+    border: solid;
+    border-color: #EC7063;
+    height: 1.5rem;
+    width: 17rem;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.inputCreateError:hover{
+    background-color: #EA5858;
+}
+
+.createDiv{
+    background-color: #AEB6BF;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+}
+
+.formulario{
+    background-color: #85929E;
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.inputYLabel{
+    grid-column: 1/5;
+    /* background-color: red; */
+    width: 70%;
+    margin: auto;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    font-weight: bolder;
+    color: #283747;
+}
+
+#contenedorTitulo {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bolder;
+    cursor:default;
+    background-color: #AEB6BF;
+    padding-bottom: 1rem;
+    color: #1B2631;
+    margin-top: 2rem;
+}
+
+.indicador{
+    margin: 0;
+    color: red;
+    font-weight: bolder;
+}
+
+.selectTemps{
+    /* margin: auto; */
+    width: 17rem;
+    height: 1.5rem;
+    background-color: whitesmoke;
+    border: none;
+    text-align: center;
+    font-family: Quicksand;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #283747;
+}
+
+.selectTemps:hover{
+    background-color: #CCD1D1;
+}
+
+#contenedorTemperamentos{
+    grid-column: 1/5;
+    /* background-color: red; */
+    margin: auto;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    grid-gap: 1rem;
+    font-weight: bolder;
+}
+
+#boton{
+    grid-column: 1/5;
+    width: 9rem;
+    height: 1.6rem;
+    background-color: #5D6D7E;
+    border: none;
+    color:white;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#boton:hover{
+    background-color: #2E4053;
+    cursor: pointer;
+}
+
+#botonBloqueado{
+    grid-column: 1/5;
+    width: 9rem;
+    height: 1.6rem;
+    background-color: #566573;
+    border: none;
+    color:#34495E;
+    font-family: Quicksand;
+    font-weight: 1000;
+    font-size: 1rem;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#contenedorAgregado{
+    background-color: #85929E;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    height: 7rem;
+}
+
+#tituloAgregado{
+    color: #239B56;
+    margin: auto;
+    font-size: 3rem;
+    font-weight: bolder;
+}

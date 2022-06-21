@@ -83,7 +83,7 @@ router.get("/dogs/:idRaza", async (req, res) => {
                 name: dog.name,
                 weight: dog.weight.join(" - "),
                 height: dog.height.join(" - "),
-                temperament: temp.toString(),
+                temperament: temp.join(", "),
                 life_span: dog.years,
                 image: dog.image,
                 origin: dog.origin,
@@ -205,6 +205,16 @@ router.delete("/dogs/:idRaza", async (req, res) => {
         res.status(200).send("Deleted");
     }catch(e){console.log(e)}
 });
+
+router.put("/dogs", async (req, res) => {
+    const {id} = req.body;
+    try{
+        const dogUpdated = await Dog.update(req.body, {where:{"id":id}});
+        res.send(dogUpdated);
+    }catch(e){
+        res.send("Error");
+    }
+})
 
 
 module.exports = router;

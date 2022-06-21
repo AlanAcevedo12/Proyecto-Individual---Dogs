@@ -11,3 +11,4 @@ export const EMPTY_DOG = "EMPTY_DOG";
 export const GET_ALL_GROUPS = "GET_ALL_GROUPS";
 export const GET_DOG_BY_GROUP = "GET_DOG_BY_GROUP";
 export const DELETE_CREATED = "DELETE_CREATED";
+export const UPDATE_DOG = "UPDATE_DOG";

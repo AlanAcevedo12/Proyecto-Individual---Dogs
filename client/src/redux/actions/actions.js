@@ -1,5 +1,5 @@
 import { GET_ALL_DOGS, GET_DOG_BY_NAME, GET_ALL_TEMPERS, 
-    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP, DELETE_CREATED } from "./actionsTypes";
+    GET_DOG_BY_TEMPER, GET_DOGS_BY_DB, GET_DOGS_BY_API, ORDER_DOGS, SET_DOG, GET_DOG_BY_ID, EMPTY_DOG, GET_ALL_GROUPS, GET_DOG_BY_GROUP, DELETE_CREATED, UPDATE_DOG } from "./actionsTypes";
 
 import axios from "axios";
 
@@ -17,10 +17,12 @@ export const getDogByName = (name) => dispatch => {
         .then(json => {return dispatch({type: GET_DOG_BY_NAME, payload: json})})
     };
 
-export const getAllTempers = () => dispatch => {
-    return fetch(`${URL}/temperaments`)
-    .then(respuesta => respuesta.json())
-    .then(json => {return dispatch({type: GET_ALL_TEMPERS, payload: json})})
+export const getAllTempers = () => async dispatch => {
+    // return fetch(`${URL}/temperaments`)
+    // .then(respuesta => respuesta.json())
+    // .then(json => {return dispatch({type: GET_ALL_TEMPERS, payload: json})})
+    const {data} = await axios.get(`${URL}/temperaments`);
+    return dispatch({type: GET_ALL_TEMPERS, payload: data});
 };
 
 export const getDogByTemper = (temper) => {
@@ -96,6 +98,13 @@ export const deleteCreated = (id) => async dispatch => {
     })
 }
 
+export const updateDog = (dog) => async dispatch => {
+    let {data} = axios.put(`${URL}/dogs`,dog)
+    return dispatch({
+        type: UPDATE_DOG,
+        payload: data
+    })
+}
 
 
 
