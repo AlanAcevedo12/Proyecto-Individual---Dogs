@@ -28,7 +28,7 @@ const rootReducer = (state = initialState, action) => {
                 dogs: action.payload
             }
         case GET_ALL_TEMPERS:
-            //console.log("Obtenidos de la api",action.payload);
+            
             return {
                 ...state,
                 tempers: action.payload
@@ -75,7 +75,7 @@ const rootReducer = (state = initialState, action) => {
                     if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                     return 0;
                 });
-                //console.log(ordenado);
+                
                 return {
                     ...state,
                     dogs: ordenado.filter(o => "a" === "a")

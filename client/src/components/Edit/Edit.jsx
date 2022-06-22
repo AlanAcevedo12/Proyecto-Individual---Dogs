@@ -47,7 +47,7 @@ export default function Edit({id}){
         if(input.minLifeSpan && input.maxLifeSpan) dog.years = `${input.minLifeSpan} - ${input.maxLifeSpan} years`;
         if(input.image) dog.image = input.image;
         if(input.origin) dog.origin = input.origin;
-        console.log(dog)
+        
         dispatch(updateDog(dog));
         setEnviado(true);
     }
@@ -60,58 +60,58 @@ export default function Edit({id}){
             </div>
             {
             !enviado ? 
-            (<form onSubmit={onSubmitHandler} class={estilos.formulario}>
-                <div class={estilos.inputYLabel}>
+            (<form onSubmit={onSubmitHandler} className={estilos.formulario}>
+                <div className={estilos.inputYLabel}>
                     <label>Breed name:</label>
-                    <input class={errores.name ? estilos.inputCreateError : estilos.inputCreate} 
+                    <input className={errores.name ? estilos.inputCreateError : estilos.inputCreate} 
                     type="text" name="name" value={input.name} onChange={onChangeHandler} placeholder="Breed name..."/>
-                    {errores.name && (<p class={estilos.indicador}>{errores.name}</p>)}
+                    {errores.name && (<p className={estilos.indicador}>{errores.name}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min height:</label>
                     <input type="number" name="minHeight" value={input.minHeight} onChange={onChangeHandler}
-                    class={errores.minHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min height..."/>
-                    {errores.minHeight && (<p class={estilos.indicador}>{errores.minHeight}</p>)}
+                    className={errores.minHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min height..."/>
+                    {errores.minHeight && (<p className={estilos.indicador}>{errores.minHeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max height:</label>
                     <input type="number" name="maxHeight" value={input.maxHeight} onChange={onChangeHandler}
-                    class={errores.maxHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max height..."/>
-                    {errores.maxHeight && (<p class={estilos.indicador}>{errores.maxHeight}</p>)}
+                    className={errores.maxHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max height..."/>
+                    {errores.maxHeight && (<p className={estilos.indicador}>{errores.maxHeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min weight:</label>
                     <input type="number" name="minWeight" value={input.minWeight} onChange={onChangeHandler}
-                    class={errores.minWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min weight..."/>
-                    {errores.minWeight && (<p class={estilos.indicador}>{errores.minWeight}</p>)}
+                    className={errores.minWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min weight..."/>
+                    {errores.minWeight && (<p className={estilos.indicador}>{errores.minWeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max weight:</label>
                     <input type="number" name="maxWeight" value={input.maxWeight} onChange={onChangeHandler}
-                    class={errores.maxWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max weight..."/>
-                    {errores.maxWeight && (<p class={estilos.indicador}>{errores.maxWeight}</p>)}
+                    className={errores.maxWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max weight..."/>
+                    {errores.maxWeight && (<p className={estilos.indicador}>{errores.maxWeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min lifespan:</label>
                     <input type="number" name="minLifeSpan" value={input.minLifeSpan} onChange={onChangeHandler}
-                    class={errores.minLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min lifespan..."/>
-                    {errores.minLifeSpan && (<p class={estilos.indicador}>{errores.minLifeSpan}</p>)}
+                    className={errores.minLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min lifespan..."/>
+                    {errores.minLifeSpan && (<p className={estilos.indicador}>{errores.minLifeSpan}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max lifespan:</label>
                     <input type="number" name="maxLifeSpan" value={input.maxLifeSpan} onChange={onChangeHandler}
-                    class={errores.maxLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max lifespan..."/>
-                    {errores.maxLifeSpan && (<p class={estilos.indicador}>{errores.maxLifeSpan}</p>)}
+                    className={errores.maxLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max lifespan..."/>
+                    {errores.maxLifeSpan && (<p className={estilos.indicador}>{errores.maxLifeSpan}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Origin:</label>
                     <input type="text" name="origin" value={input.origin} onChange={onChangeHandler}
-                    class={estilos.inputCreate} placeholder="Origin..."/>
+                    className={estilos.inputCreate} placeholder="Origin..."/>
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Image:</label>
                     <input type="text" name="image" value={input.image} onChange={onChangeHandler}
-                    class={estilos.inputCreate} placeholder="Imgae url..."/>
+                    className={estilos.inputCreate} placeholder="Imgae url..."/>
                 </div>
                 <button id={botonBloqueado !== "disabled" ? estilos.boton : estilos.botonBloqueado} 
                 type="submit" disabled={botonBloqueado}>Update breed</button>

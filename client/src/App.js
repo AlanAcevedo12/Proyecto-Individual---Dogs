@@ -1,5 +1,4 @@
 import { Route, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
 import './App.css';
 import Landing from './components/Landing';
 import DogDetails from "./components/DogDetails/DogDetails";

@@ -1,7 +1,6 @@
 import {React} from "react";
 import { Link } from "react-router-dom";
-import estilos from "./Landing.module.css"
-import fondo from "../resources/cachorros2.jpg";
+import estilos from "./Landing.module.css";
 
 export default function Landing(){
     document.title = "Henry Dogs - Landing";

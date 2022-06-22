@@ -20,7 +20,7 @@ export default function DogDetails({id}){
     if(!dog.origin) dog.origin = "No associated origin";
     if(!dog.temperament) dog.temperament = "No associated temperament";
     if(!dog.breed_group) dog.breed_group = "Unknown"
-    console.log(dog);
+    
 
     function deleteDogHandler(){
         const idRaza = id.slice(2);
@@ -35,39 +35,39 @@ export default function DogDetails({id}){
                 <h1 id={estilos.nombrePerro}>{dog.name}</h1>
                 <img id={estilos.imagen} src={dog.image}/>
                 <div id={estilos.contenedorDatos}>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Breed group: </h2>
-                        <h3 class={estilos.textoDato}>{dog.breed_group}</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Breed group: </h2>
+                        <h3 className={estilos.textoDato}>{dog.breed_group}</h3>
                     </div>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Origin: </h2>
-                        <h3 class={estilos.textoDato}>{dog.origin}</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Origin: </h2>
+                        <h3 className={estilos.textoDato}>{dog.origin}</h3>
                     </div>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Height: </h2>
-                        <h3 class={estilos.textoDato}>{dog.height} Cm</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Height: </h2>
+                        <h3 className={estilos.textoDato}>{dog.height} Cm</h3>
                     </div>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Weight: </h2>
-                        <h3 class={estilos.textoDato}>{dog.weight} Kg</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Weight: </h2>
+                        <h3 className={estilos.textoDato}>{dog.weight} Kg</h3>
                     </div>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Lifespan: </h2>
-                        <h3 class={estilos.textoDato}>{dog.life_span}</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Lifespan: </h2>
+                        <h3 className={estilos.textoDato}>{dog.life_span}</h3>
                     </div>
-                    <div class={estilos.datos}>
-                        <h2 class={estilos.tituloDato}>Temperaments: </h2>
-                        <h3 class={estilos.textoDato}>{dog.temperament}</h3>
+                    <div className={estilos.datos}>
+                        <h2 className={estilos.tituloDato}>Temperaments: </h2>
+                        <h3 className={estilos.textoDato}>{dog.temperament}</h3>
                     </div>
                 </div>
                     {
                         id.includes("db") ? 
                         (
                             <div id={estilos.contenedorEdicion}>
-                                <div class={estilos.botonesEdicion}><Link to="/home" class={estilos.linkDel}>
+                                <div className={estilos.botonesEdicion}><Link to="/home" className={estilos.linkDel}>
                                     <h2 id={estilos.delete} onClick={deleteDogHandler}>Delete</h2>
                                 </Link></div>
-                                <div class={estilos.botonesEdicion}><Link to={`/edit/${id}`} class={estilos.linkEdit}>
+                                <div className={estilos.botonesEdicion}><Link to={`/edit/${id}`} className={estilos.linkEdit}>
                                     <h2 id={estilos.delete}>Edit</h2>
                                 </Link></div>
                             </div>

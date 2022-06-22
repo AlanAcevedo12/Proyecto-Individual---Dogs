@@ -54,7 +54,7 @@ export const orderDogs = (orden) => {
 }
 
 export const setDog =  (dog) => async dispatch => {
-    //console.log(dog);
+   
     let dogPost = await axios.post(`${URL}/dogs`, dog);
     return dispatch({
         type: SET_DOG,

@@ -6,7 +6,7 @@ import { emptyDog } from "../../redux/actions/actions";
 
 export default function DogCard({dog}){
     const dispatch = useDispatch();
-    //console.log(dog);
+    
     if(!dog.hasOwnProperty("image") || dog.image.length === 0) dog.image =  "https://s2.coinmarketcap.com/static/img/coins/200x200/14447.png";
     //
     if(!dog.hasOwnProperty("temperament")) dog.temperament = "No associated temperaments";
@@ -16,18 +16,18 @@ export default function DogCard({dog}){
                 <img id={estilo.imagenId} src={dog.image} alt="Fotito Perrito" />
             </div>
             <h1 id={estilo.nombreId}>{dog.name}</h1>
-            <span class={estilo.datos}>{dog.breed_group ? dog.breed_group : "Unknown"}</span>
+            <span className={estilo.datos}>{dog.breed_group ? dog.breed_group : "Unknown"}</span>
             <div id={estilo.divDatos}>
-                <div class={estilo.datosYTitulo}>
-                   <span class={estilo.tituloDatos}>Temperament:</span>
-                    <span class={estilo.datos}> {!dog.temperament.length > 40 ? dog.temperament : dog.temperament.slice(0, 40)+" ..."}</span> 
+                <div className={estilo.datosYTitulo}>
+                   <span className={estilo.tituloDatos}>Temperament:</span>
+                    <span className={estilo.datos}> {!dog.temperament.length > 40 ? dog.temperament : dog.temperament.slice(0, 40)+" ..."}</span> 
                 </div>
                 
                 <br />
-                {/* <p class={estilo.datos}>Weight:</p> */}
-                <div class={estilo.datosYTitulo}>
-                    <span class={estilo.tituloDatos}>Weight:</span>
-                    <span class={estilo.datos}> {dog.weight[0]} - {dog.weight[1]} KG</span>
+                {/* <p className={estilo.datos}>Weight:</p> */}
+                <div className={estilo.datosYTitulo}>
+                    <span className={estilo.tituloDatos}>Weight:</span>
+                    <span className={estilo.datos}> {dog.weight[0]} - {dog.weight[1]} KG</span>
                 </div>
                 
             </div>

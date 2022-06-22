@@ -6,21 +6,21 @@ import patas from "../../resources/patas.png"
 export default function NavBar(){
     return(
         <nav id={estilos.navBar}>
-            <div class={estilos.opciones}>
+            <div className={estilos.opciones}>
                 <Link to="/home">
-                    <h1 class={estilos.tituloId}>Home</h1>
+                    <h1 className={estilos.tituloId}>Home</h1>
                 </Link>
-                <img src={patas} class={estilos.patitas}/>
+                <img src={patas} className={estilos.patitas}/>
             </div>
-            <div class={estilos.opciones}>
+            <div className={estilos.opciones}>
                 <Link to="/create">
-                    <h1 class={estilos.tituloId}>Create</h1>
+                    <h1 className={estilos.tituloId}>Create</h1>
                 </Link>
             </div>
-            <div class={estilos.opciones}>
-            <img src={patas} class={estilos.patitas}/>
+            <div className={estilos.opciones}>
+            <img src={patas} className={estilos.patitas}/>
                 <Link to="/about">
-                    <h1 class={estilos.tituloId}>About</h1>
+                    <h1 className={estilos.tituloId}>About</h1>
                 </Link>
             </div>
         </nav>

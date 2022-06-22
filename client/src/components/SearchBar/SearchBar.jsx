@@ -53,7 +53,7 @@ export default function SearchBar({tempers, resetPagina, breedGroups}){
                 placeholder="Breed..." onChange={manejadorCambiosEstado} required/>
                 <button id={estilos.botonBusqueda} type="submit">Search</button>
             </form>
-            <select class={estilos.selectFiltro} name="breedGroups" onChange={filtrarPorGrupo} value={input.group}>
+            <select className={estilos.selectFiltro} name="breedGroups" onChange={filtrarPorGrupo} value={input.group}>
                 <option key="0">All</option>
                 {
                     breedGroups?.map(
@@ -65,7 +65,7 @@ export default function SearchBar({tempers, resetPagina, breedGroups}){
                     )
                 }
             </select>
-            <select class={estilos.selectFiltro} name="temperament" onChange={filtrarPorTemperamento} value={input.temperament}>
+            <select className={estilos.selectFiltro} name="temperament" onChange={filtrarPorTemperamento} value={input.temperament}>
                     <option key="0">All</option>
                     {
                         tempers?.map(
@@ -77,12 +77,12 @@ export default function SearchBar({tempers, resetPagina, breedGroups}){
                         )
                     }
             </select>
-            <select class={estilos.selectFiltro} name="FiltroRaza" onChange={filtroRaza} value={input.raza}>
+            <select className={estilos.selectFiltro} name="FiltroRaza" onChange={filtroRaza} value={input.raza}>
                     <option>All Breeds</option>
                     <option>API Breeds</option>
                     <option>Created Breeds</option>
             </select>
-            <select class={estilos.selectFiltro} name="Orden" onChange={orden} value={input.orden}>
+            <select className={estilos.selectFiltro} name="Orden" onChange={orden} value={input.orden}>
                 <option>A-Z</option>
                 <option>Z-A</option>
                 <option>Weight Asc</option>

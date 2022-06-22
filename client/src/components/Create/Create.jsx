@@ -28,7 +28,7 @@ export default function Create(){
                 || !input.minLifeSpan || !input.maxLifeSpan || input.breedGroup === "Select breed group"){
                     setBotonBloqueado("disabled");
             }
-        }
+        }, [errores, input]
     )
 
     useEffect(
@@ -55,7 +55,6 @@ export default function Create(){
 
     function onChangeTempHandler(e, i){
         let arrTemp = input.temperaments;
-        // console.log(e.target.value);
         arrTemp[i] = e.target.value;
         setInput( {...input, [e.target.name]:arrTemp});
         return;
@@ -72,7 +71,6 @@ export default function Create(){
         dog.image = input.image;
         dog.breed_group = input.breedGroup;
         dog.origin = input.origin;
-        console.log(dog);
         dispatch(setDog(dog));
         setEnviado(true);
     }
@@ -85,16 +83,16 @@ export default function Create(){
             </div>
             {
             !enviado ? 
-            (<form onSubmit={onSubmitHandler} class={estilos.formulario}>
-                <div class={estilos.inputYLabel}>
+            (<form onSubmit={onSubmitHandler} className={estilos.formulario}>
+                <div className={estilos.inputYLabel}>
                     <label>Breed name:</label>
-                    <input class={errores.name ? estilos.inputCreateError : estilos.inputCreate} 
+                    <input className={errores.name ? estilos.inputCreateError : estilos.inputCreate} 
                     type="text" name="name" value={input.name} onChange={onChangeHandler} placeholder="Breed name..."/>
-                    {errores.name && (<p class={estilos.indicador}>{errores.name}</p>)}
+                    {errores.name && (<p className={estilos.indicador}>{errores.name}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Breed group:</label>
-                    <select class={estilos.selectTemps} name="breedGroup" value={input.breedGroup} onChange={onChangeHandler}>
+                    <select className={estilos.selectTemps} name="breedGroup" value={input.breedGroup} onChange={onChangeHandler}>
                         <option key={0}>Select breed group</option>
                         {
                             breedGroupList?.map(
@@ -105,61 +103,61 @@ export default function Create(){
                         }
                     </select>
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min height:</label>
                     <input type="number" name="minHeight" value={input.minHeight} onChange={onChangeHandler}
-                    class={errores.minHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min height..."/>
-                    {errores.minHeight && (<p class={estilos.indicador}>{errores.minHeight}</p>)}
+                    className={errores.minHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min height..."/>
+                    {errores.minHeight && (<p className={estilos.indicador}>{errores.minHeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max height:</label>
                     <input type="number" name="maxHeight" value={input.maxHeight} onChange={onChangeHandler}
-                    class={errores.maxHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max height..."/>
-                    {errores.maxHeight && (<p class={estilos.indicador}>{errores.maxHeight}</p>)}
+                    className={errores.maxHeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max height..."/>
+                    {errores.maxHeight && (<p className={estilos.indicador}>{errores.maxHeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min weight:</label>
                     <input type="number" name="minWeight" value={input.minWeight} onChange={onChangeHandler}
-                    class={errores.minWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min weight..."/>
-                    {errores.minWeight && (<p class={estilos.indicador}>{errores.minWeight}</p>)}
+                    className={errores.minWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min weight..."/>
+                    {errores.minWeight && (<p className={estilos.indicador}>{errores.minWeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max weight:</label>
                     <input type="number" name="maxWeight" value={input.maxWeight} onChange={onChangeHandler}
-                    class={errores.maxWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max weight..."/>
-                    {errores.maxWeight && (<p class={estilos.indicador}>{errores.maxWeight}</p>)}
+                    className={errores.maxWeight ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max weight..."/>
+                    {errores.maxWeight && (<p className={estilos.indicador}>{errores.maxWeight}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Min lifespan:</label>
                     <input type="number" name="minLifeSpan" value={input.minLifeSpan} onChange={onChangeHandler}
-                    class={errores.minLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min lifespan..."/>
-                    {errores.minLifeSpan && (<p class={estilos.indicador}>{errores.minLifeSpan}</p>)}
+                    className={errores.minLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Min lifespan..."/>
+                    {errores.minLifeSpan && (<p className={estilos.indicador}>{errores.minLifeSpan}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Max lifespan:</label>
                     <input type="number" name="maxLifeSpan" value={input.maxLifeSpan} onChange={onChangeHandler}
-                    class={errores.maxLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max lifespan..."/>
-                    {errores.maxLifeSpan && (<p class={estilos.indicador}>{errores.maxLifeSpan}</p>)}
+                    className={errores.maxLifeSpan ? estilos.inputCreateError : estilos.inputCreate} placeholder="Max lifespan..."/>
+                    {errores.maxLifeSpan && (<p className={estilos.indicador}>{errores.maxLifeSpan}</p>)}
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Origin:</label>
                     <input type="text" name="origin" value={input.origin} onChange={onChangeHandler}
-                    class={estilos.inputCreateNR} placeholder="Origin..."/>
+                    className={estilos.inputCreateNR} placeholder="Origin..."/>
                 </div>
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Image:</label>
                     <input type="text" name="image" value={input.image} onChange={onChangeHandler}
-                    class={estilos.inputCreateNR} placeholder="Imgae url..."/>
+                    className={estilos.inputCreateNR} placeholder="Imgae url..."/>
                 </div>
-                {/* <div class={estilos.inputYLabel}>
+                {/* <div className={estilos.inputYLabel}>
                     <label>Breed group:</label>
                     <input type="text" name="breedGroup" value={input.breedGroup} onChange={onChangeHandler}
-                    class={estilos.inputCreate} placeholder="Breed group..."/>
+                    className={estilos.inputCreate} placeholder="Breed group..."/>
                 </div> */}
                 
-                <div class={estilos.inputYLabel}>
+                <div className={estilos.inputYLabel}>
                     <label>Number of temperaments:</label>
-                    <select class={estilos.selectTempsNR} name="cantTemps" value={input.cantTemps[input.cantTemps.length - 1]} onChange={onChangeHandler}>
+                    <select className={estilos.selectTempsNR} name="cantTemps" value={input.cantTemps[input.cantTemps.length - 1]} onChange={onChangeHandler}>
                     {
                         arrNroTemps.map(
                             (c, i) => {
@@ -174,8 +172,8 @@ export default function Create(){
                         input.cantTemps.map(
                             (c, i) => {
                                 return (
-                                    <div class={estilos.labTemp}><label></label>
-                                    <select class={estilos.selectTempsNR} name="temperaments" value={input.temperaments[i]} 
+                                    <div className={estilos.labTemp}><label></label>
+                                    <select className={estilos.selectTempsNR} name="temperaments" value={input.temperaments[i]} 
                                     onChange={(e) => onChangeTempHandler(e, i)} key={i}>
                                         <option key={0}>Select temperament</option>
                                         {
@@ -207,7 +205,6 @@ export default function Create(){
 }
 
 export function validar(input, errores, globalInput){
-    // console.log("valido",input);
     if(errores[input.name]) errores[input.name] = "";
     switch(input.name){
         case "name":
@@ -256,6 +253,7 @@ export function validar(input, errores, globalInput){
             }
             if(input.value === "0") errores[input.name] = "Required";
             break;
+        default: return errores;
     }
     return errores;
 }
