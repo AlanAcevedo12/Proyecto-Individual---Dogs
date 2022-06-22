@@ -1,24 +1,53 @@
-.CardContainerDiv{
-    /* background-color: blanchedalmond; */
-    margin: auto;
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 25px;
-    grid-column-gap: 0px;
-    align-items: center;
-    padding-bottom: 1rem;
-    background-color: #85929E;
+
+@media screen and (min-width: 1024px) {
+    .CardContainerDiv{
+        /* background-color: blanchedalmond; */
+        margin: auto;
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 25px;
+        grid-column-gap: 0px;
+        align-items: center;
+        padding-bottom: 1rem;
+        background-color: #85929E;
+    }
+
+    #contenedorTitulo {
+        /* margin-top: 2rem; */
+        grid-column: 1 / 5;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: bolder;
+        cursor:default;
+        background-color: #AEB6BF;
+        padding-bottom: 1rem;
+        color: #283747;
+    }
+
 }
 
-#contenedorTitulo {
-    /* margin-top: 2rem; */
-    grid-column: 1 / 5;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    font-weight: bolder;
-    cursor:default;
-    background-color: #AEB6BF;
-    padding-bottom: 1rem;
-    color: #283747;
+@media screen and (max-width: 1024px){
+    .CardContainerDiv{
+        /* background-color: blanchedalmond; */
+        margin: auto;
+        width: 25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1rem;
+        background-color: #85929E;
+    }
+
+    #contenedorTitulo {
+        width: 100%;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: bolder;
+        cursor:default;
+        background-color: #AEB6BF;
+        padding-bottom: 1rem;
+        color: #283747;
+    }
+
 }

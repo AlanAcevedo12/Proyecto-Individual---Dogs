@@ -174,6 +174,7 @@ export default function Create(){
                         input.cantTemps.map(
                             (c, i) => {
                                 return (
+                                    <div class={estilos.labTemp}><label></label>
                                     <select class={estilos.selectTempsNR} name="temperaments" value={input.temperaments[i]} 
                                     onChange={(e) => onChangeTempHandler(e, i)} key={i}>
                                         <option key={0}>Select temperament</option>
@@ -186,7 +187,7 @@ export default function Create(){
                                                 } 
                                             )
                                         }
-                                    </select>
+                                    </select></div>
                                 )
                             }
                         )

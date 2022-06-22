@@ -10,7 +10,7 @@ a{
 }
 
 #cargando{
-    margin-top: 2rem;
+    margin-top: 32px;
     width: 250px;
     border-style: solid;
     border-color: #2E4053;
@@ -19,6 +19,6 @@ a{
 
 #cargandoh1{
     color: #283747;
-    margin-top: 1rem;
-    font-size: 3rem;
+    margin-top: 16px;
+    font-size: 48px;
 }

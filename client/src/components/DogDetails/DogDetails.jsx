@@ -68,7 +68,7 @@ export default function DogDetails({id}){
                                     <h2 id={estilos.delete} onClick={deleteDogHandler}>Delete</h2>
                                 </Link></div>
                                 <div class={estilos.botonesEdicion}><Link to={`/edit/${id}`} class={estilos.linkEdit}>
-                                    <h2 id={estilos.delete} onClick="">Edit</h2>
+                                    <h2 id={estilos.delete}>Edit</h2>
                                 </Link></div>
                             </div>
                         ) :

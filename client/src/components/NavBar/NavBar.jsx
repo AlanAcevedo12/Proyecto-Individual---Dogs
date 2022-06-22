@@ -10,7 +10,7 @@ export default function NavBar(){
                 <Link to="/home">
                     <h1 class={estilos.tituloId}>Home</h1>
                 </Link>
-                <img src={patas}/>
+                <img src={patas} class={estilos.patitas}/>
             </div>
             <div class={estilos.opciones}>
                 <Link to="/create">
@@ -18,7 +18,7 @@ export default function NavBar(){
                 </Link>
             </div>
             <div class={estilos.opciones}>
-            <img src={patas}/>
+            <img src={patas} class={estilos.patitas}/>
                 <Link to="/about">
                     <h1 class={estilos.tituloId}>About</h1>
                 </Link>

@@ -1,73 +1,74 @@
-.DogCardDiv{
-    background-color:#EBEDEF;
-    width: 90%;
-    height: 23rem;
-    margin: auto;
+@media screen and (min-width: 1024px) {
+    .DogCardDiv{
+        background-color:#EBEDEF;
+        width: 90%;
+        height: 100%;
+        margin: auto;
+    }
+
+    #nombreId{
+        margin-top: 5%;
+        font-size: 1rem;
+    }
+
+    #contenedorImg{
+        width: 90%;
+        height: 50%;
+        margin: auto;
+        /* overflow: hidden;
+        border-style: solid;
+        border-width: 2px;
+        border-color: black; */
+        margin-top: 5%;
+    }
+
+    #imagenId{
+        width: 100%;
+        height: 100%;
+    }
+
+    #divDatos{
+        margin: auto;
+        margin-top: 0.7rem;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .datos{
+        font-size: 0.7rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.2rem;
+    }
+
+    .tituloDatos{
+        font-size: 0.85rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5rem;
+        text-decoration: underline;
+    }
+
+    #aDetalles{
+        font-size: 0.85rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5rem;
+    }
+
+    #aDetalles:hover{
+        color:gray;
+    }
+
+    .DogCardDiv:hover{
+        animation: cardsWooble 2s linear 0s infinite normal none;
+    }
+
 }
-
-#nombreId{
-    margin-top: 5%;
-    font-size: 1rem;
-}
-
-#contenedorImg{
-    width: 90%;
-    height: 50%;
-    margin: auto;
-    /* overflow: hidden;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black; */
-    margin-top: 5%;
-}
-
-#imagenId{
-    width: 100%;
-    height: 100%;
-}
-
-#divDatos{
-    margin: auto;
-    margin-top: 0.7rem;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-}
-
-.datos{
-    font-size: 0.7rem;
-    font-weight: bolder;
-    width: 90%;
-    margin: auto;
-    margin-top: 0.2rem;
-}
-
-.tituloDatos{
-    font-size: 0.85rem;
-    font-weight: bolder;
-    width: 90%;
-    margin: auto;
-    margin-top: 0.5rem;
-    text-decoration: underline;
-}
-
-#aDetalles{
-    font-size: 0.85rem;
-    font-weight: bolder;
-    width: 90%;
-    margin: auto;
-    margin-top: 0.5rem;
-}
-
-#aDetalles:hover{
-    color:gray;
-}
-
-.DogCardDiv:hover{
-    animation: cardsWooble 2s linear 0s infinite normal none;
-}
-
-
 /* ANIMACION */
 
 @keyframes cardsWooble {
@@ -82,4 +83,61 @@
 	100% {
 		transform: scale(1);
 	}
+}
+
+@media screen and (max-width: 1024px){
+    .DogCardDiv{
+        background-color:#EBEDEF;
+        width: 22rem;
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+
+    #contenedorImg{
+        width: 20rem;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    #imagenId{
+        width: 100%;
+        height: 100%;
+    }
+
+    #divDatos{
+        margin: auto;
+        margin-top: 0.7rem;
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .datos{
+        font-size: 0.7rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.2rem;
+    }
+
+    .tituloDatos{
+        font-size: 0.85rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5rem;
+        text-decoration: underline;
+    }
+
+    #aDetalles{
+        font-size: 0.85rem;
+        font-weight: bolder;
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5rem;
+    }
+
+    #aDetalles:hover{
+        color:gray;
+    }
 }
